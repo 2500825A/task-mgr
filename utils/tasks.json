@@ -1,14 +1,14 @@
 [
     {
         "id": 1,
-        "title": "Complete Mathematics Assignment",
+        "title": "Updated Mathematics Assignment",
         "description": "Finish Chapter 3 exercises",
         "category": "Assignment",
-        "priority": "High",
+        "priority": "Medium",
         "dueDate": "2026-11-25",
-        "status": "Pending",
+        "status": "In Progress",
         "createdAt": "2026-11-18T09:00:00.000",
-        "updatedAt": "2026-11-18T09:00:00.000"
+        "updatedAt": "2026-11-18T03:13:01.860Z"
     },
     {
         "id": 2,
