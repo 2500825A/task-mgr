@@ -1,11 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
-</head>
-<body>
-   
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Task Manager Dashboard</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">Task Manager</div>
+
+        <nav class="sidebar-menu">
+          <a href="/" class="active">Dashboard</a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+          <h1 class="page-title">Dashboard</h1>
+
+          <div class="topbar-right">
+            <div class="user-profile">Student</div>
+          </div>
+        </div>
+
+        <!-- Welcome -->
+        <section class="welcome-section">
+          <h2>Welcome back!</h2>
+
+          <p>Here's an overview of your tasks.</p>
+        </section>
+
+        <!-- Statistics -->
+        <section class="stats-container">
+          <div class="stat-card">
+            <div class="stat-icon">📋</div>
+            <p>Total Tasks</p>
+            <h2 id="totalTasks">0</h2>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">⏳</div>
+            <p>Pending</p>
+            <h2 id="pendingTasks">0</h2>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">🔄</div>
+            <p>In Progress</p>
+            <h2 id="inProgressTasks">0</h2>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <p>Completed</p>
+            <h2 id="completedTasks">0</h2>
+          </div>
+        </section>
+
+        <!-- Tasks -->
+        <section class="card">
+          <div class="card-header">
+            <h3>My Tasks</h3>
+          </div>
+
+          <!-- Search and Filter -->
+          <div class="filter-container">
+            <input
+              type="text"
+              id="searchInput"
+              class="search-bar"
+              placeholder="Search task title..."
+              maxlength="100"
+            />
+
+            <select id="statusFilter">
+              <option value="">All Statuses</option>
+
+              <option value="Pending">Pending</option>
+
+              <option value="In Progress">In Progress</option>
+
+              <option value="Completed">Completed</option>
+            </select>
+
+            <button type="button" id="searchButton" class="btn btn-primary">
+              Search
+            </button>
+
+            <button type="button" id="resetButton" class="btn btn-secondary">
+              Reset
+            </button>
+          </div>
+
+          <!-- Error Message -->
+          <div id="errorMessage"></div>
+
+          <!-- Task List -->
+          <div id="taskList" class="task-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+  </body>
 </html>
