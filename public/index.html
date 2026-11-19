@@ -1,18 +1,15 @@
+
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Task Manager Dashboard</title>
-
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
   <div class="app-container">
-    <!-- Sidebar -->
     <aside class="sidebar">
       <div class="logo">Task Manager</div>
 
@@ -21,25 +18,19 @@
       </nav>
     </aside>
 
-    <!-- Main Content -->
     <main class="main-content">
-      <!-- Topbar -->
       <div class="topbar">
         <h1 class="page-title">Dashboard</h1>
-
         <div class="topbar-right">
           <div class="user-profile">Student</div>
         </div>
       </div>
 
-      <!-- Welcome -->
       <section class="welcome-section">
         <h2>Welcome back!</h2>
-
         <p>Here's an overview of your tasks.</p>
       </section>
 
-      <!-- Statistics -->
       <section class="stats-container">
         <div class="stat-card">
           <div class="stat-icon">📋</div>
@@ -66,23 +57,24 @@
         </div>
       </section>
 
-      <!-- Tasks -->
       <section class="card">
         <div class="card-header">
           <h3>My Tasks</h3>
         </div>
 
-        <!-- Search and Filter -->
         <div class="filter-container">
-          <input type="text" id="searchInput" class="search-bar" placeholder="Search task title..." maxlength="100" />
+          <input
+            type="text"
+            id="searchInput"
+            class="search-bar"
+            placeholder="Search task title..."
+            maxlength="100"
+          />
 
           <select id="statusFilter">
             <option value="">All Statuses</option>
-
             <option value="Pending">Pending</option>
-
             <option value="In Progress">In Progress</option>
-
             <option value="Completed">Completed</option>
           </select>
 
@@ -95,16 +87,11 @@
           </button>
         </div>
 
-        <!-- Error Message -->
         <div id="errorMessage"></div>
 
-        <!-- Task List -->
         <div id="taskList" class="task-list"></div>
 
-
-        <!-- Update Task Form -->
         <div id="updateTaskContainer" class="card" style="display: none;">
-
           <div class="card-header">
             <h3>Update Task</h3>
           </div>
@@ -112,7 +99,6 @@
           <div id="updateMessage"></div>
 
           <form id="updateTaskForm">
-
             <input type="hidden" id="updateTaskId">
 
             <div class="form-group">
@@ -167,16 +153,13 @@
                 Cancel
               </button>
             </div>
-
           </form>
         </div>
-
       </section>
     </main>
   </div>
 
-  <script src="js/dashboard.js"></script>
+  <script src="js/Kevin.js"></script>
   <script src="js/coen.js"></script>
 </body>
-
 </html>

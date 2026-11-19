@@ -5,7 +5,6 @@ const TASKS_FILE = path.join(__dirname, "tasks.json");
 
 async function readTasks() {
   const data = await fs.readFile(TASKS_FILE, "utf8");
-
   return JSON.parse(data);
 }
 
@@ -27,6 +26,20 @@ async function getTasks(filters = {}) {
   return tasks;
 }
 
+async function getTaskById(id) {
+  const tasks = await readTasks();
+
+  const task = tasks.find((task) => String(task.id) === String(id));
+
+  if (!task) {
+    const error = new Error("Task not found.");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  return task;
+}
+
 async function getTaskSummary() {
   const tasks = await readTasks();
 
@@ -41,5 +54,6 @@ async function getTaskSummary() {
 module.exports = {
   readTasks,
   getTasks,
+  getTaskById,
   getTaskSummary,
 };

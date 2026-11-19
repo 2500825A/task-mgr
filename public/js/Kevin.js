@@ -8,7 +8,6 @@ const resetButton = document.getElementById("resetButton");
 
 const errorMessage = document.getElementById("errorMessage");
 
-// Escape HTML to prevent task text from being interpreted as HTML
 function escapeHTML(value) {
   return String(value ?? "").replace(/[&<>"']/g, (character) => {
     const replacements = {
@@ -23,7 +22,6 @@ function escapeHTML(value) {
   });
 }
 
-// Convert task status into CSS class
 function getStatusClass(status) {
   if (status === "Pending") {
     return "status-pending";
@@ -40,13 +38,8 @@ function getStatusClass(status) {
   return "";
 }
 
-// Check whether a task is overdue
 function isOverdue(task) {
-  if (task.status === "Completed") {
-    return false;
-  }
-
-  if (!task.dueDate) {
+  if (task.status === "Completed" || !task.dueDate) {
     return false;
   }
 
@@ -55,14 +48,12 @@ function isOverdue(task) {
 
   const dueDate = new Date(task.dueDate + "T00:00:00");
 
-  return dueDate < today;
+  return !Number.isNaN(dueDate.getTime()) && dueDate < today;
 }
 
-// Display tasks
 function displayTasks(tasks) {
   taskList.innerHTML = "";
 
-  // If no tasks found
   if (tasks.length === 0) {
     taskList.innerHTML = `
             <div class="empty-state">
@@ -79,7 +70,6 @@ function displayTasks(tasks) {
 
     taskCard.className = "task-card";
 
-    // Status badge
     let statusClass = getStatusClass(task.status);
 
     let statusText = task.status;
@@ -89,7 +79,6 @@ function displayTasks(tasks) {
       statusText = "Overdue";
     }
 
-    // Priority class
     const priorityClass = "priority-" + String(task.priority).toLowerCase();
 
     taskCard.innerHTML = `
@@ -127,6 +116,14 @@ function displayTasks(tasks) {
                     ${escapeHTML(task.priority)} Priority
                 </span>
 
+                <button
+                    class="btn btn-secondary view-details-btn"
+                    type="button"
+                    data-id="${escapeHTML(task.id)}"
+                >
+                    View Details
+                </button>
+
             </div>
         `;
 
@@ -134,14 +131,12 @@ function displayTasks(tasks) {
   });
 }
 
-// Retrieve tasks from backend
 async function loadTasks() {
   errorMessage.innerHTML = "";
 
   const search = searchInput.value.trim();
   const status = statusFilter.value;
 
-  // Frontend validation
   if (search.length > 100) {
     errorMessage.innerHTML = `
             <div class="alert alert-error">
@@ -152,7 +147,6 @@ async function loadTasks() {
     return;
   }
 
-  // Build query parameters
   const params = new URLSearchParams();
 
   if (search) {
@@ -184,7 +178,6 @@ async function loadTasks() {
   }
 }
 
-// Retrieve dashboard summary
 async function loadSummary() {
   try {
     const response = await fetch("/api/tasks/summary");
@@ -209,20 +202,28 @@ async function loadSummary() {
   }
 }
 
-// Search button
+taskList.addEventListener("click", (event) => {
+  const button = event.target.closest(".view-details-btn");
+
+  if (!button) {
+    return;
+  }
+
+  const taskId = button.dataset.id;
+
+  window.location.href = `task-details.html?id=${encodeURIComponent(taskId)}`;
+});
+
 searchButton.addEventListener("click", loadTasks);
 
-// Search using Enter key
 searchInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     loadTasks();
   }
 });
 
-// Filter when status changes
 statusFilter.addEventListener("change", loadTasks);
 
-// Reset search and filter
 resetButton.addEventListener("click", () => {
   searchInput.value = "";
   statusFilter.value = "";
@@ -230,6 +231,5 @@ resetButton.addEventListener("click", () => {
   loadTasks();
 });
 
-// Load dashboard when page opens
 loadTasks();
 loadSummary();
