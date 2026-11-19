@@ -1,114 +1,182 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Task Manager Dashboard</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
+  <title>Task Manager Dashboard</title>
 
-  <body>
-    <div class="app-container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <div class="logo">Task Manager</div>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
 
-        <nav class="sidebar-menu">
-          <a href="/" class="active">Dashboard</a>
-        </nav>
-      </aside>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">Task Manager</div>
 
-      <!-- Main Content -->
-      <main class="main-content">
-        <!-- Topbar -->
-        <div class="topbar">
-          <h1 class="page-title">Dashboard</h1>
+      <nav class="sidebar-menu">
+        <a href="/" class="active">Dashboard</a>
+      </nav>
+    </aside>
 
-          <div class="topbar-right">
-            <div class="user-profile">Student</div>
-          </div>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Topbar -->
+      <div class="topbar">
+        <h1 class="page-title">Dashboard</h1>
+
+        <div class="topbar-right">
+          <div class="user-profile">Student</div>
+        </div>
+      </div>
+
+      <!-- Welcome -->
+      <section class="welcome-section">
+        <h2>Welcome back!</h2>
+
+        <p>Here's an overview of your tasks.</p>
+      </section>
+
+      <!-- Statistics -->
+      <section class="stats-container">
+        <div class="stat-card">
+          <div class="stat-icon">📋</div>
+          <p>Total Tasks</p>
+          <h2 id="totalTasks">0</h2>
         </div>
 
-        <!-- Welcome -->
-        <section class="welcome-section">
-          <h2>Welcome back!</h2>
+        <div class="stat-card">
+          <div class="stat-icon">⏳</div>
+          <p>Pending</p>
+          <h2 id="pendingTasks">0</h2>
+        </div>
 
-          <p>Here's an overview of your tasks.</p>
-        </section>
+        <div class="stat-card">
+          <div class="stat-icon">🔄</div>
+          <p>In Progress</p>
+          <h2 id="inProgressTasks">0</h2>
+        </div>
 
-        <!-- Statistics -->
-        <section class="stats-container">
-          <div class="stat-card">
-            <div class="stat-icon">📋</div>
-            <p>Total Tasks</p>
-            <h2 id="totalTasks">0</h2>
-          </div>
+        <div class="stat-card">
+          <div class="stat-icon">✅</div>
+          <p>Completed</p>
+          <h2 id="completedTasks">0</h2>
+        </div>
+      </section>
 
-          <div class="stat-card">
-            <div class="stat-icon">⏳</div>
-            <p>Pending</p>
-            <h2 id="pendingTasks">0</h2>
-          </div>
+      <!-- Tasks -->
+      <section class="card">
+        <div class="card-header">
+          <h3>My Tasks</h3>
+        </div>
 
-          <div class="stat-card">
-            <div class="stat-icon">🔄</div>
-            <p>In Progress</p>
-            <h2 id="inProgressTasks">0</h2>
-          </div>
+        <!-- Search and Filter -->
+        <div class="filter-container">
+          <input type="text" id="searchInput" class="search-bar" placeholder="Search task title..." maxlength="100" />
 
-          <div class="stat-card">
-            <div class="stat-icon">✅</div>
-            <p>Completed</p>
-            <h2 id="completedTasks">0</h2>
-          </div>
-        </section>
+          <select id="statusFilter">
+            <option value="">All Statuses</option>
 
-        <!-- Tasks -->
-        <section class="card">
+            <option value="Pending">Pending</option>
+
+            <option value="In Progress">In Progress</option>
+
+            <option value="Completed">Completed</option>
+          </select>
+
+          <button type="button" id="searchButton" class="btn btn-primary">
+            Search
+          </button>
+
+          <button type="button" id="resetButton" class="btn btn-secondary">
+            Reset
+          </button>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage"></div>
+
+        <!-- Task List -->
+        <div id="taskList" class="task-list"></div>
+
+
+        <!-- Update Task Form -->
+        <div id="updateTaskContainer" class="card" style="display: none;">
+
           <div class="card-header">
-            <h3>My Tasks</h3>
+            <h3>Update Task</h3>
           </div>
 
-          <!-- Search and Filter -->
-          <div class="filter-container">
-            <input
-              type="text"
-              id="searchInput"
-              class="search-bar"
-              placeholder="Search task title..."
-              maxlength="100"
-            />
+          <div id="updateMessage"></div>
 
-            <select id="statusFilter">
-              <option value="">All Statuses</option>
+          <form id="updateTaskForm">
 
-              <option value="Pending">Pending</option>
+            <input type="hidden" id="updateTaskId">
 
-              <option value="In Progress">In Progress</option>
+            <div class="form-group">
+              <label for="updateTitle">Task Title</label>
+              <input type="text" id="updateTitle" maxlength="100" required>
+            </div>
 
-              <option value="Completed">Completed</option>
-            </select>
+            <div class="form-group">
+              <label for="updateDescription">Description</label>
+              <textarea id="updateDescription" maxlength="500" required></textarea>
+            </div>
 
-            <button type="button" id="searchButton" class="btn btn-primary">
-              Search
-            </button>
+            <div class="form-group">
+              <label for="updateCategory">Category</label>
+              <select id="updateCategory" required>
+                <option value="Assignment">Assignment</option>
+                <option value="Revision">Revision</option>
+                <option value="Project">Project</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
 
-            <button type="button" id="resetButton" class="btn btn-secondary">
-              Reset
-            </button>
-          </div>
+            <div class="form-group">
+              <label for="updatePriority">Priority</label>
+              <select id="updatePriority" required>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
 
-          <!-- Error Message -->
-          <div id="errorMessage"></div>
+            <div class="form-group">
+              <label for="updateDueDate">Due Date</label>
+              <input type="date" id="updateDueDate" required>
+            </div>
 
-          <!-- Task List -->
-          <div id="taskList" class="task-list"></div>
-        </section>
-      </main>
-    </div>
+            <div class="form-group">
+              <label for="updateStatus">Status</label>
+              <select id="updateStatus" required>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
 
-    <script src="js/dashboard.js"></script>
-  </body>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                Save Changes
+              </button>
+
+              <button type="button" id="cancelUpdate" class="btn btn-secondary">
+                Cancel
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/coen.js"></script>
+</body>
+
 </html>
