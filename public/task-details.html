@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Task Details - Task Manager</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="logo">Task Manager</div>
+
+        <nav class="sidebar-menu">
+          <a href="/" class="active"> Dashboard </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="topbar">
+          <h1 class="page-title">Task Details</h1>
+
+          <div class="topbar-right">
+            <a href="/" class="btn btn-secondary"> Back to Dashboard </a>
+          </div>
+        </div>
+
+        <div id="errorMessage"></div>
+
+        <section class="card" id="taskDetails" hidden>
+          <div class="card-header">
+            <h3 id="taskTitle">Task Title</h3>
+
+            <span id="taskStatus" class="status"> Status </span>
+          </div>
+
+          <div class="task-detail-content">
+            <div class="detail-group">
+              <label>Description</label>
+
+              <p id="taskDescription"></p>
+            </div>
+
+            <div class="detail-grid">
+              <div class="detail-group">
+                <label>Category</label>
+
+                <p id="taskCategory"></p>
+              </div>
+
+              <div class="detail-group">
+                <label>Priority</label>
+
+                <p id="taskPriority"></p>
+              </div>
+
+              <div class="detail-group">
+                <label>Due Date</label>
+
+                <p id="taskDueDate"></p>
+              </div>
+
+              <div class="detail-group">
+                <label>Task ID</label>
+
+                <p id="taskId"></p>
+              </div>
+
+              <div class="detail-group">
+                <label>Created At</label>
+
+                <p id="taskCreatedAt"></p>
+              </div>
+
+              <div class="detail-group">
+                <label>Last Updated</label>
+
+                <p id="taskUpdatedAt"></p>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-primary" id="editButton">
+              Edit Task
+            </button>
+
+            <button type="button" class="btn btn-danger" id="deleteButton">
+              Delete Task
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/task-details.js"></script>
+  </body>
+</html>

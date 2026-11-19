@@ -544,8 +544,6 @@ tr:hover {
   }
 }
 
-/* Dashboard task display */
-
 .task-card {
   align-items: flex-start;
 }
@@ -637,5 +635,57 @@ tr:hover {
   #searchButton,
   #resetButton {
     width: 100%;
+  }
+}
+
+.task-detail-content {
+  margin-top: 25px;
+}
+
+.detail-group {
+  margin-bottom: 25px;
+}
+
+.detail-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.detail-group p {
+  font-size: 15px;
+  color: var(--text-dark);
+  overflow-wrap: anywhere;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px 30px;
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border);
+}
+
+.task-detail-content .detail-group {
+  padding: 15px;
+  background-color: var(--background);
+  border-radius: 8px;
+  margin-bottom: 0;
+}
+
+.task-detail-content .detail-group label {
+  margin-bottom: 5px;
+}
+
+.task-detail-content .detail-group p {
+  font-weight: 600;
+}
+
+@media (max-width: 550px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
   }
 }
