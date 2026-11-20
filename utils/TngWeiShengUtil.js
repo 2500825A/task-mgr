@@ -11,17 +11,20 @@ async function createTask(req, res) {
       const newTask = new Task(title, description, category, priority, dueDate, status);
       let tasks = [];
       // Requirements for task data: must not be empty, null and must be of correct type. If any of these requirements are not met, throw an error.
-      if (
-         newTask.title === null ||
-         newTask.description === null || 
-         newTask.category === null || 
-         newTask.priority === null || 
-         newTask.dueDate === null || 
-         newTask.status === null
-      ) { 
-         // Validate data and throw an error if any required field is missing or invalid
+      const fields = [
+         newTask.title,
+         newTask.description,
+         newTask.category,
+         newTask.priority, 
+         newTask.dueDate,
+         newTask.status 
+      ];
+
+      // Validate data and throw an error if any required field is missing or invalid
+      if (fields.some(field => field === null || field === undefined || field === '')) {
          throw new Error('All fields are required');
       }
+
       try {
          // Try reading the existing tasks.json
          const data = await fs.readFile(TASKS_FILE, 'utf8');
@@ -35,6 +38,18 @@ async function createTask(req, res) {
             throw err;
          }
       }
+
+      // Duplicate data check
+      const duplicateTask = tasks.some(task =>
+         task.title === newTask.title &&
+         task.description === newTask.description
+      );
+
+      // Validate data and throw an error if any duplicate task is found
+      if (duplicateTask) {
+         throw new Error('Task already exists');
+      }
+      
       // Add new task and save to file
       tasks.push(newTask);
       await fs.writeFile(TASKS_FILE, JSON.stringify(tasks, null, 2),

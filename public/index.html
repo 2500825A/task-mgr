@@ -83,10 +83,18 @@
 
         <div id="errorMessage"></div>
 
-        <div class="edit-task-action">
-          <button type="button" id="openUpdateForm" class="btn btn-primary">
-            Edit a Task
-          </button>
+        <div class="task-actions">
+          <div class="create-task-action">
+            <button type="button" class="btn btn-primary" onclick="openCreateForm()">
+              Create a Task
+            </button>
+          </div>
+
+          <div class="edit-task-action">
+            <button type="button" id="openUpdateForm" class="btn btn-primary">
+              Edit a Task
+            </button>
+          </div>
         </div>
 
         <div id="taskList" class="task-list"></div>
@@ -161,6 +169,69 @@
               </button>
             </div>
           </form>
+          </div>
+
+        <div id="createTaskContainer" class="card" style="display: none;">
+          <div class="card-header">
+            <h3>Create Task</h3>
+          </div>
+
+          <div id="createMessage"></div>
+
+          <form id="createTaskForm">
+            <div class="form-group">
+              <label for="title">Task Title</label>
+              <input type="text" id="title" maxlength="100" required>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea id="description" maxlength="500" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category" required>
+                <option value="Assignment">Assignment</option>
+                <option value="Revision">Revision</option>
+                <option value="Project">Project</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="priority">Priority</label>
+              <select id="priority" required>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="dueDate">Due Date</label>
+              <input type="date" id="dueDate" required>
+            </div>
+
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select id="status" required>
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                Create Task
+              </button>
+
+              <button type="button" class="btn btn-secondary" onclick="closeCreateForm()">
+                Cancel
+              </button>
+            </div>
+          </form>
         </div>
       </section>
     </main>
@@ -168,6 +239,8 @@
 
   <script src="js/Kevin.js"></script>
   <script src="js/coen.js"></script>
+  <script src="js/TngWeiSheng.js"></script>
+
 </body>
 
 </html>
