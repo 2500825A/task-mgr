@@ -13,6 +13,9 @@ app.use(bodyParser.json());
 
 app.use(express.static("./public"));
 
+const { createTask } = require('./utils/TngWeiShengUtil')
+app.post('/create-task', createTask);
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/" + startPage);
 });
