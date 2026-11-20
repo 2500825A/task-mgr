@@ -1,6 +1,6 @@
-
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -63,13 +63,7 @@
         </div>
 
         <div class="filter-container">
-          <input
-            type="text"
-            id="searchInput"
-            class="search-bar"
-            placeholder="Search task title..."
-            maxlength="100"
-          />
+          <input type="text" id="searchInput" class="search-bar" placeholder="Search task title..." maxlength="100" />
 
           <select id="statusFilter">
             <option value="">All Statuses</option>
@@ -89,6 +83,12 @@
 
         <div id="errorMessage"></div>
 
+        <div class="edit-task-action">
+          <button type="button" id="openUpdateForm" class="btn btn-primary">
+            Edit a Task
+          </button>
+        </div>
+
         <div id="taskList" class="task-list"></div>
 
         <div id="updateTaskContainer" class="card" style="display: none;">
@@ -100,6 +100,13 @@
 
           <form id="updateTaskForm">
             <input type="hidden" id="updateTaskId">
+
+            <div class="form-group">
+              <label for="taskToEdit">Select Task</label>
+              <select id="taskToEdit" required>
+                <option value="">Select a task</option>
+              </select>
+            </div>
 
             <div class="form-group">
               <label for="updateTitle">Task Title</label>
@@ -162,4 +169,5 @@
   <script src="js/Kevin.js"></script>
   <script src="js/coen.js"></script>
 </body>
+
 </html>

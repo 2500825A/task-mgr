@@ -4,22 +4,22 @@
         "title": "Updated Mathematics Assignment",
         "description": "Finish Chapter 3 exercises",
         "category": "Assignment",
-        "priority": "Medium",
+        "priority": "High",
         "dueDate": "2026-11-25",
         "status": "In Progress",
         "createdAt": "2026-11-18T09:00:00.000",
-        "updatedAt": "2026-11-18T03:13:01.860Z"
+        "updatedAt": "2026-11-20T07:54:48.414Z"
     },
     {
         "id": 2,
-        "title": "Study for Biology Quiz",
-        "description": "Revise Chapter 5 and 6",
-        "category": "Revision",
-        "priority": "Medium",
-        "dueDate": "2026-11-28",
-        "status": "In Progress",
+        "title": "Study for Kevin Quiz",
+        "description": "Revise Chapter 67 and say wallahi",
+        "category": "Project",
+        "priority": "High",
+        "dueDate": "2026-12-12",
+        "status": "Pending",
         "createdAt": "2026-11-18T09:30:00.000",
-        "updatedAt": "2026-11-18T09:30:00.000"
+        "updatedAt": "2026-11-20T07:58:02.224Z"
     },
     {
         "id": 3,
