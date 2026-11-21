@@ -25,8 +25,11 @@ if (loginForm) {
 
             // D. Check whether the login request was successful
             if (response.ok) {
+                // Save the username so the dashboard can display it
+                localStorage.setItem('username', username);
+
                 // Redirect the user to the main dashboard
-                window.location.href = '/';
+                window.location.href = '/index.html';
             } else {
                 // Display the error message returned by the backend
                 const loginMessage = document.getElementById('loginMessage');

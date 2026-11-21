@@ -8,12 +8,11 @@ const deleteTaskUtil = require("./utils/DeleteTaskUtil");
 const { signup, login } = require("./utils/LimZiHanJayzonUtil");
 
 const PORT = process.env.PORT || 5050;
-var startPage = "index.html";
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static("./public"));
+app.use(express.static("./public", { index: false }));
 
 const { createTask } = require('./utils/TngWeiShengUtil')
 app.post('/create-task', createTask);
@@ -22,7 +21,7 @@ app.post('/api/signup', signup);
 app.post('/api/login', login);
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/" + startPage);
+  res.redirect("/login.html");
 });
 
 app.get("/api/tasks", async (req, res) => {
@@ -156,4 +155,3 @@ module.exports = {
   app,
   server,
 };
-
