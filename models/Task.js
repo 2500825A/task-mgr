@@ -1,5 +1,5 @@
 class Task {
-   constructor(title, description, category, priority, dueDate, status) {
+   constructor(title, description, category, priority, dueDate, status, username) {
 
       const timestamp = new Date().getTime();
       const random = Math.floor(Math.random() * 1000);
@@ -11,6 +11,7 @@ class Task {
       this.priority = priority;
       this.dueDate = dueDate;
       this.status = status;
+      this.username = username;
 
       this.createdAt = new Date(timestamp).toISOString();
       this.updatedAt = new Date(timestamp).toISOString();

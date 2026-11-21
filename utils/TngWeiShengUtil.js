@@ -7,8 +7,8 @@ const TEMPLATE_FILE = path.join('utils', 'tasks.template.json');
 async function createTask(req, res) {
    try {
       // Extract task data from request body
-      const { title, description, category, priority, dueDate, status} = req.body;
-      const newTask = new Task(title, description, category, priority, dueDate, status);
+      const { title, description, category, priority, dueDate, status, username } = req.body;
+      const newTask = new Task(title, description, category, priority, dueDate, status, username);
       let tasks = [];
       // Requirements for task data: must not be empty, null and must be of correct type. If any of these requirements are not met, throw an error.
       const fields = [
@@ -41,8 +41,7 @@ async function createTask(req, res) {
 
       // Duplicate data check
       const duplicateTask = tasks.some(task =>
-         task.title === newTask.title &&
-         task.description === newTask.description
+         task.title === newTask.title
       );
 
       // Validate data and throw an error if any duplicate task is found

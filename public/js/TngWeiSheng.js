@@ -9,9 +9,16 @@ function createTask() {
    jsonData.priority = document.getElementById("priority").value;
    jsonData.dueDate = document.getElementById("dueDate").value;
    jsonData.status = document.getElementById("status").value;
+   jsonData.username = localStorage.getItem("username"); // Get the username from local storage
 
    // Validate required fields (all must be filled in)
-   if (jsonData.title.trim() == "" || jsonData.description.trim() == "" || jsonData.category.trim() == "" || jsonData.priority.trim() == "" || jsonData.dueDate.trim() == "" || jsonData.status.trim() == "")
+   if (jsonData.title.trim() == "" || 
+   jsonData.description.trim() == "" || 
+   jsonData.category.trim() == "" || 
+   jsonData.priority.trim() == "" || 
+   jsonData.dueDate.trim() == "" || 
+   jsonData.status.trim() == "" ||
+   jsonData.username.trim() == "")
    {
       alert('All fields are required!');
       return; // Stop execution if validation fails
