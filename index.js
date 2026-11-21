@@ -4,6 +4,7 @@ var app = express();
 
 const coenUtil = require("./utils/CoenUtil");
 const readTasksUtil = require("./utils/KevinUtil");
+const deleteTaskUtil = require("./utils/DeleteTaskUtil");
 const { signup, login } = require("./utils/LimZiHanJayzonUtil");
 
 const PORT = process.env.PORT || 5050;
@@ -108,6 +109,7 @@ app.get("/api/tasks/:id", async (req, res) => {
   }
 });
 
+
 app.patch("/api/tasks/:id", async (req, res) => {
   try {
     const updatedTask = await coenUtil.updateTask(req.params.id, req.body);
@@ -119,6 +121,23 @@ app.patch("/api/tasks/:id", async (req, res) => {
   } catch (error) {
     return res.status(error.statusCode || 500).json({
       message: error.message || "Internal server error.",
+    });
+  }
+});
+
+app.delete("/api/tasks/:id", async (req, res) => {
+  try {
+    const deletedTask = await deleteTaskUtil.deleteTask(req.params.id);
+
+    return res.status(200).json({
+      message: "Task deleted successfully.",
+      task: deletedTask,
+    });
+  } catch (error) {
+    console.error(error);
+
+    return res.status(error.statusCode || 500).json({
+      message: error.message || "Unable to delete task.",
     });
   }
 });
@@ -137,3 +156,4 @@ module.exports = {
   app,
   server,
 };
+
