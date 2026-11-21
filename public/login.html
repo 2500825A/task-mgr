@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set the character encoding and make the page responsive -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Set the page title -->
+    <title>Login</title>
+
+    <!-- Link the external CSS stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Main container for the login form -->
+    <div class="auth-container">
+        <h1>Welcome Back!</h1>
+        <p>Please enter your username to continue.</p>
+
+        <!-- Form used to collect the user's login details -->
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    required
+                >
+            </div>
+
+            <!-- Area used to display login success or error messages -->
+            <div id="loginMessage"></div>
+
+            <!-- Submit the login form -->
+            <button type="submit" class="btn btn-primary">
+                Login
+            </button>
+        </form>
+
+        <!-- Link to the signup page for users without an account -->
+        <p>
+            Don't have an account?
+            <a href="signup.html">Sign up here</a>
+        </p>
+    </div>
+
+    <!-- Load the JavaScript file that handles login and signup -->
+    <script src="js/LimZiHanJayzon.js"></script>
+</body>
+</html>
