@@ -4,6 +4,7 @@ var app = express();
 
 const coenUtil = require("./utils/CoenUtil");
 const readTasksUtil = require("./utils/KevinUtil");
+const { signup, login } = require("./utils/LimZiHanJayzonUtil");
 
 const PORT = process.env.PORT || 5050;
 var startPage = "index.html";
@@ -15,6 +16,9 @@ app.use(express.static("./public"));
 
 const { createTask } = require('./utils/TngWeiShengUtil')
 app.post('/create-task', createTask);
+
+app.post('/api/signup', signup);
+app.post('/api/login', login);
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/" + startPage);

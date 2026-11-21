@@ -694,3 +694,28 @@ tr:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* Login and Signup Pages */
+.auth-container {
+    max-width: 420px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.auth-container h1 {
+    margin-bottom: 10px;
+}
+
+.auth-container > p {
+    color: var(--text-light);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.auth-container button {
+    width: 100%;
+}

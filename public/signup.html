@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set the character encoding and make the page responsive -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Set the page title -->
+    <title>Sign Up</title>
+
+    <!-- Link the external CSS stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Main container for the signup form -->
+    <div class="auth-container">
+        <h1>Create Account</h1>
+        <p>Enter a username to get started.</p>
+
+        <!-- Form used to collect the user's registration details -->
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="signupUsername">Username</label>
+                <input
+                    type="text"
+                    id="signupUsername"
+                    name="username"
+                    placeholder="Choose a username"
+                    required
+                >
+            </div>
+
+            <!-- Area used to display signup success or error messages -->
+            <div id="signupMessage"></div>
+
+            <!-- Submit the signup form -->
+            <button type="submit" class="btn btn-primary">
+                Sign Up
+            </button>
+        </form>
+
+        <!-- Link to the login page for existing users -->
+        <p>
+            Already have an account?
+            <a href="login.html">Log in here</a>
+        </p>
+    </div>
+
+    <!-- Load the JavaScript file that handles login and signup -->
+    <script src="js/LimZiHanJayzon.js"></script>
+</body>
+</html>
